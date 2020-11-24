@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  test:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.test
+    image: ${IMAGE:-pipdevs/test}
+    depends_on:
+      - sqlite
+    environment:
+      - MYSQL_HOST=sqlite
+      - MYSQL_PORT=5432
+      - MYSQL_USER=sqlite
+      - MYSQL_PASSWORD=sqlite
+      - MYSQL_DB=test
+
+  sqlite:
+    image: sqlite:latest
+    # container_name: sqlite
+    environment:
+      MYSQL_USER: sqlite
+      MYSQL_PASSWORD: sqlite
+      MYSQL_DB: test
+    # ports:
+    #   - "5432:5432"
+          
