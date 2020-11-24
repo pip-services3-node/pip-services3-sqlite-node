@@ -13,6 +13,7 @@ export class DummyJsonSqlitePersistence
     public constructor() {
         super('dummies_json');
         this.ensureTable();
+        this.autoCreateObject("CREATE UNIQUE INDEX IF NOT EXISTS dummies_json_key ON dummies_json (JSON_EXTRACT(data, '$.key'))");
     }
 
     public getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, 
