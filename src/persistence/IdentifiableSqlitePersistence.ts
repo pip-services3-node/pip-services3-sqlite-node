@@ -36,7 +36,7 @@ import { SqlitePersistence } from './SqlitePersistence';
  * 
  * - <code>\*:logger:\*:\*:1.0</code>           (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/log.ilogger.html ILogger]] components to pass log messages components to pass log messages
  * - <code>\*:discovery:\*:\*:1.0</code>        (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/connect.idiscovery.html IDiscovery]] services
- * - <code>\*:credential-store:\*:\*:1.0</code> (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/auth.icredentialstore.html Credential stores]] to resolve credentials
+ * - <code>\*:credential-store:\*:\*:1.0</code> (optional) Credential stores to resolve credentials
  * 
  * ### Example ###
  * 
