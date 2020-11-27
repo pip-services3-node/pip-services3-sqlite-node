@@ -4,6 +4,10 @@ This module is a part of the [Pip.Services](http://pip.services.org) polyglot mi
 
 This module contains the following packages:
 
+- **Build** - a standard factory for constructing components
+- **Connect** - instruments for configuring connections to the database.
+- **Persistence** - abstract classes for working with the database that can be used for connecting to collections and performing basic CRUD operations
+
 <a name="links"></a> Quick links:
 
 * [Configuration](https://www.pipservices.org/recipies/configuration) 

@@ -15,7 +15,7 @@ import { SqlitePersistence } from './SqlitePersistence';
 /**
  * Abstract persistence component that stores data in SQLite
  * and implements a number of CRUD operations over data items with unique ids.
- * The data items must implement IIdentifiable interface.
+ * The data items must implement [[https://pip-services3-node.github.io/pip-services3-commons-node/interfaces/data.iidentifiable.html IIdentifiable]] interface.
  * 
  * In basic scenarios child classes shall only override [[getPageByFilter]],
  * [[getListByFilter]] or [[deleteByFilter]] operations with specific filter function.
@@ -28,15 +28,15 @@ import { SqlitePersistence } from './SqlitePersistence';
  * 
  * - collection:                  (optional) SQLite table name
  * - connection(s):    
- *   - discovery_key:             (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
+ *   - discovery_key:             (optional) a key to retrieve the connection from [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/connect.idiscovery.html IDiscovery]]
  *   - database:                  database file path
  *   - uri:                       resource URI with file:// protocol
  * 
  * ### References ###
  * 
- * - <code>\*:logger:\*:\*:1.0</code>           (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages components to pass log messages
- * - <code>\*:discovery:\*:\*:1.0</code>        (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services
- * - <code>\*:credential-store:\*:\*:1.0</code> (optional) Credential stores to resolve credentials
+ * - <code>\*:logger:\*:\*:1.0</code>           (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/log.ilogger.html ILogger]] components to pass log messages components to pass log messages
+ * - <code>\*:discovery:\*:\*:1.0</code>        (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/connect.idiscovery.html IDiscovery]] services
+ * - <code>\*:credential-store:\*:\*:1.0</code> (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/auth.icredentialstore.html Credential stores]] to resolve credentials
  * 
  * ### Example ###
  * 
