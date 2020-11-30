@@ -2,8 +2,9 @@
 /test
 /obj/test
 /data
-/doc
+/docs
 /docker
+/node_modules
 /.dockerignore
 /*.sh
 /*.ps1
