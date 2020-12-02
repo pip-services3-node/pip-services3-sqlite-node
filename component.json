@@ -1,6 +1,6 @@
 {
-    "name": "pip-services3-sqlite",
+    "name": "pip-services3-sqlite-node",
     "registry": "pipdevs",
     "version": "3.0.0",
-    "build": "0"
+    "build": 0
 }
