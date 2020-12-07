@@ -2,7 +2,10 @@
 
 ## <a name="3.0.0"></a> 3.0.0 (2020-11-23) 
 
+Initial public release
+
 ### Features
+
 * Added SqliteConnectionResolver
 * Added SqliteConnection
 * Added SqlitePersistence
