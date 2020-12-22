@@ -16,7 +16,7 @@ services:
       - MYSQL_DB=test
 
   sqlite:
-    image: sqlite:latest
+    image: pipdevs/sqlite:3
     # container_name: sqlite
     environment:
       MYSQL_USER: sqlite
