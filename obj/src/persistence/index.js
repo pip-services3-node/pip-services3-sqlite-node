@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @preferred
  */
 var SqliteConnection_1 = require("./SqliteConnection");
-exports.SqliteConnection = SqliteConnection_1.SqliteConnection;
+Object.defineProperty(exports, "SqliteConnection", { enumerable: true, get: function () { return SqliteConnection_1.SqliteConnection; } });
 var SqlitePersistence_1 = require("./SqlitePersistence");
-exports.SqlitePersistence = SqlitePersistence_1.SqlitePersistence;
+Object.defineProperty(exports, "SqlitePersistence", { enumerable: true, get: function () { return SqlitePersistence_1.SqlitePersistence; } });
 var IdentifiableSqlitePersistence_1 = require("./IdentifiableSqlitePersistence");
-exports.IdentifiableSqlitePersistence = IdentifiableSqlitePersistence_1.IdentifiableSqlitePersistence;
+Object.defineProperty(exports, "IdentifiableSqlitePersistence", { enumerable: true, get: function () { return IdentifiableSqlitePersistence_1.IdentifiableSqlitePersistence; } });
 var IdentifiableJsonSqlitePersistence_1 = require("./IdentifiableJsonSqlitePersistence");
-exports.IdentifiableJsonSqlitePersistence = IdentifiableJsonSqlitePersistence_1.IdentifiableJsonSqlitePersistence;
+Object.defineProperty(exports, "IdentifiableJsonSqlitePersistence", { enumerable: true, get: function () { return IdentifiableJsonSqlitePersistence_1.IdentifiableJsonSqlitePersistence; } });
 //# sourceMappingURL=index.js.map

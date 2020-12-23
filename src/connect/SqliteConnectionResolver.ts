@@ -169,5 +169,4 @@ export class SqliteConnectionResolver implements IReferenceable, IConfigurable {
             }
         });
     }
-
 }

@@ -5,5 +5,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @preferred
  */
 var SqliteConnectionResolver_1 = require("./SqliteConnectionResolver");
-exports.SqliteConnectionResolver = SqliteConnectionResolver_1.SqliteConnectionResolver;
+Object.defineProperty(exports, "SqliteConnectionResolver", { enumerable: true, get: function () { return SqliteConnectionResolver_1.SqliteConnectionResolver; } });
 //# sourceMappingURL=index.js.map

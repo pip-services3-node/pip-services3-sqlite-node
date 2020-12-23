@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *
  */
 var DefaultSqliteFactory_1 = require("./DefaultSqliteFactory");
-exports.DefaultSqliteFactory = DefaultSqliteFactory_1.DefaultSqliteFactory;
+Object.defineProperty(exports, "DefaultSqliteFactory", { enumerable: true, get: function () { return DefaultSqliteFactory_1.DefaultSqliteFactory; } });
 //# sourceMappingURL=index.js.map
