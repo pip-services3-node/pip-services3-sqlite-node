@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.IdentifiableJsonSqlitePersistence = exports.IdentifiableSqlitePersistence = exports.SqlitePersistence = exports.SqliteConnection = void 0;
 /**
  * @module persistence
  * @preferred

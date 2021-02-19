@@ -109,7 +109,7 @@ export class SqlitePersistence<T> implements IReferenceable, IUnreferenceable, I
     private _references: IReferences;
     private _opened: boolean;
     private _localConnection: boolean;
-    private _autoObjects: string[] = [];
+    private _schemaStatements: string[] = [];
 
     /**
      * The dependency resolver.
@@ -239,11 +239,34 @@ export class SqlitePersistence<T> implements IReferenceable, IUnreferenceable, I
     }
 
     /**
-     * Adds index definition to create it on opening
-     * @param dmlStatement DML statement to autocreate database object
+     * Adds a statement to schema definition.
+     * This is a deprecated method. Use ensureSchema instead.
+     * @param schemaStatement a statement to be added to the schema
      */
-    protected autoCreateObject(dmlStatement: string): void {
-        this._autoObjects.push(dmlStatement);
+    protected autoCreateObject(schemaStatement: string): void {
+        this.ensureSchema(schemaStatement);
+    }
+
+    /**
+     * Adds a statement to schema definition
+     * @param schemaStatement a statement to be added to the schema
+     */
+    protected ensureSchema(schemaStatement: string): void {
+        this._schemaStatements.push(schemaStatement);
+    }
+
+    /**
+     * Clears all auto-created objects
+     */
+    protected clearSchema(): void {
+        this._schemaStatements = [];
+    }
+
+    /**
+     * Defines database schema via auto create objects or convenience methods.
+     */
+    protected defineSchema(): void {
+        // Todo: override in chile classes
     }
 
     /** 
@@ -316,9 +339,12 @@ export class SqlitePersistence<T> implements IReferenceable, IUnreferenceable, I
             } else {
                 this._client = this._connection.getConnection();
                 this._databaseName = this._connection.getDatabaseName();
+
+                // Define database schema
+                this.defineSchema();
                 
                 // Recreate objects
-                this.autoCreateObjects(correlationId, (err) => {
+                this.createSchema(correlationId, (err) => {
                     if (err) {
                         this._client == null;
                         err = new ConnectionException(correlationId, "CONNECT_FAILED", "Connection to sqlite failed").withCause(err);    
@@ -396,14 +422,14 @@ export class SqlitePersistence<T> implements IReferenceable, IUnreferenceable, I
         });
     }
 
-    protected autoCreateObjects(correlationId: string, callback: (err: any) => void): void {
-        if (this._autoObjects == null || this._autoObjects.length == 0) {
+    protected createSchema(correlationId: string, callback: (err: any) => void): void {
+        if (this._schemaStatements == null || this._schemaStatements.length == 0) {
             callback(null);
             return null;
         }
     
         // Check if table exist to determine weither to auto create objects
-        let query = "SELECT * FROM '" + this._tableName + "' LIMIT 1";
+        let query = "SELECT * FROM " + this.quoteIdentifier(this._tableName) + " LIMIT 1";
         this._client.get(query, (err) => {
             // If table already exists then exit
             if (err == null) {
@@ -419,7 +445,7 @@ export class SqlitePersistence<T> implements IReferenceable, IUnreferenceable, I
             this._logger.debug(correlationId, 'Table ' + this._tableName + ' does not exist. Creating database objects...');
 
             // Run all DML commands
-            async.eachSeries(this._autoObjects, (dml, callback) => {
+            async.eachSeries(this._schemaStatements, (dml, callback) => {
                 this._client.exec(dml, (err) => {
                     if (err) {
                         this._logger.error(correlationId, err, 'Failed to autocreate database object');

@@ -12,8 +12,12 @@ export class DummySqlitePersistence
 {
     public constructor() {
         super('dummies');
-        this.autoCreateObject('CREATE TABLE "dummies" ("id" VARCHAR(32) PRIMARY KEY, "key" VARCHAR(50), "content" TEXT)');
-        this.ensureIndex('dummies_key', { key: 1 }, { unique: true });
+    }
+
+    protected defineSchema(): void {
+        this.clearSchema();
+        this.ensureSchema('CREATE TABLE "' + this._tableName + '" ("id" VARCHAR(32) PRIMARY KEY, "key" VARCHAR(50), "content" TEXT)');
+        this.ensureIndex(this._tableName + '_key', { key: 1 }, { unique: true });
     }
 
     public getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams, 

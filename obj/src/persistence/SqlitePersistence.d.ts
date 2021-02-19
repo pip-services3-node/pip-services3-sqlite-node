@@ -84,7 +84,7 @@ export declare class SqlitePersistence<T> implements IReferenceable, IUnreferenc
     private _references;
     private _opened;
     private _localConnection;
-    private _autoObjects;
+    private _schemaStatements;
     /**
      * The dependency resolver.
      */
@@ -140,10 +140,24 @@ export declare class SqlitePersistence<T> implements IReferenceable, IUnreferenc
      */
     protected ensureIndex(name: string, keys: any, options?: any): void;
     /**
-     * Adds index definition to create it on opening
-     * @param dmlStatement DML statement to autocreate database object
+     * Adds a statement to schema definition.
+     * This is a deprecated method. Use ensureSchema instead.
+     * @param schemaStatement a statement to be added to the schema
      */
-    protected autoCreateObject(dmlStatement: string): void;
+    protected autoCreateObject(schemaStatement: string): void;
+    /**
+     * Adds a statement to schema definition
+     * @param schemaStatement a statement to be added to the schema
+     */
+    protected ensureSchema(schemaStatement: string): void;
+    /**
+     * Clears all auto-created objects
+     */
+    protected clearSchema(): void;
+    /**
+     * Defines database schema via auto create objects or convenience methods.
+     */
+    protected defineSchema(): void;
     /**
      * Converts object value from internal to public format.
      *
@@ -186,7 +200,7 @@ export declare class SqlitePersistence<T> implements IReferenceable, IUnreferenc
      * @param callback 			callback function that receives error or null no errors occured.
      */
     clear(correlationId: string, callback?: (err: any) => void): void;
-    protected autoCreateObjects(correlationId: string, callback: (err: any) => void): void;
+    protected createSchema(correlationId: string, callback: (err: any) => void): void;
     /**
      * Generates a list of column names to use in SQL statements like: "column1,column2,column3"
      * @param values an array with column values or a key-value map
