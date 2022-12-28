@@ -4,7 +4,7 @@ name: Pip.Services SQLite Node.js Delivery
 on: 
   push:
     branches:
-      - master
+      - main
     paths:
     - '**'
     - '!README.md'
